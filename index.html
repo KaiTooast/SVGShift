@@ -70,10 +70,11 @@
 
         .left-panel {
             flex: 1;
-            padding: 2rem;
+            padding: 1.5rem;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            overflow-y: auto;
         }
 
         .right-panel {
@@ -92,8 +93,8 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 2rem;
-            font-size: 2.25rem;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
             font-weight: 800;
             letter-spacing: -0.025em;
         }
@@ -121,7 +122,7 @@
         input[type="file"],
         input[type="number"] {
             width: 100%;
-            padding: 0.875rem 1rem;
+            padding: 0.75rem 1rem;
             border: 2px solid var(--border-color);
             border-radius: 12px;
             font-size: 0.9375rem;
@@ -147,7 +148,7 @@
         .button-group {
             display: flex;
             gap: 0.75rem;
-            margin-top: 1.5rem;
+            margin-top: 1.25rem;
         }
 
         button {
@@ -155,7 +156,7 @@
             background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-hover) 100%);
             color: white;
             border: none;
-            padding: 1rem 1.75rem;
+            padding: 0.875rem 1.5rem;
             font-size: 0.9375rem;
             font-weight: 600;
             cursor: pointer;
@@ -187,7 +188,7 @@
         .checkbox-group {
             display: flex;
             align-items: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             padding: 0.75rem;
             background-color: var(--background-color);
             border-radius: 12px;
@@ -199,17 +200,27 @@
         }
 
         .checkbox-group input[type="checkbox"] {
-            margin-right: 0.75rem;
-            width: 1.25rem;
-            height: 1.25rem;
+            margin-right: 0.625rem;
+            width: 1.125rem;
+            height: 1.125rem;
             cursor: pointer;
             accent-color: var(--primary-color);
+            flex-shrink: 0;
         }
 
         .checkbox-group label {
             margin-bottom: 0;
             cursor: pointer;
             user-select: none;
+            font-size: 0.875rem;
+            white-space: nowrap;
+        }
+
+        .checkbox-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 0.75rem;
+            margin-bottom: 1rem;
         }
 
         #preview {
@@ -228,7 +239,7 @@
         }
 
         #output {
-            margin-top: 1.5rem;
+            margin-top: 1.25rem;
             text-align: center;
         }
 
@@ -237,7 +248,7 @@
             background: linear-gradient(135deg, var(--secondary-color) 0%, var(--secondary-hover) 100%);
             color: white;
             text-decoration: none;
-            padding: 1rem 2rem;
+            padding: 0.875rem 1.75rem;
             border-radius: 12px;
             font-weight: 600;
             font-size: 0.9375rem;
@@ -433,9 +444,26 @@
                 <input type="number" id="pngHeight" value="300" min="1" aria-describedby="heightHint">
                 <p id="heightHint" class="hint">Enter the desired height of the PNG image in pixels.</p>
             </div>
-            <div class="checkbox-group">
-                <input type="checkbox" id="maintainAspectRatio" checked>
-                <label for="maintainAspectRatio">Maintain Aspect Ratio</label>
+            <div class="checkbox-container">
+                <div class="checkbox-group">
+                    <input type="checkbox" id="maintainAspectRatio" checked>
+                    <label for="maintainAspectRatio">Aspect Ratio</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="makeSquare">
+                    <label for="makeSquare">Square (1:1)</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="addBackground">
+                    <label for="addBackground">Background</label>
+                </div>
+            </div>
+            <div class="input-group" id="colorPickerGroup" style="display: none;">
+                <label for="backgroundColor">Background Color:</label>
+                <div style="display: flex; gap: 0.75rem; align-items: center;">
+                    <input type="color" id="backgroundColor" value="#ffffff" style="width: 60px; height: 40px; border: 2px solid var(--border-color); border-radius: 8px; cursor: pointer;">
+                    <input type="text" id="colorHex" value="#ffffff" placeholder="#ffffff" style="flex: 1;" readonly>
+                </div>
             </div>
             <div class="button-group">
                 <button onclick="convertSvgToPng()" aria-label="Convert SVG to PNG">Convert to PNG</button>
@@ -519,22 +547,67 @@
             }
         });
 
+        // Background color checkbox handler
+        document.getElementById('addBackground').addEventListener('change', function() {
+            const colorPickerGroup = document.getElementById('colorPickerGroup');
+            if (this.checked) {
+                colorPickerGroup.style.display = 'block';
+            } else {
+                colorPickerGroup.style.display = 'none';
+            }
+        });
+
+        // Update hex input when color picker changes
+        document.getElementById('backgroundColor').addEventListener('input', function() {
+            document.getElementById('colorHex').value = this.value.toUpperCase();
+        });
+
+        // Make square checkbox handler
+        document.getElementById('makeSquare').addEventListener('change', function() {
+            if (this.checked) {
+                // Disable aspect ratio when making square
+                document.getElementById('maintainAspectRatio').checked = false;
+                
+                // Make dimensions square (use the larger dimension)
+                const currentWidth = parseFloat(document.getElementById('pngWidth').value);
+                const currentHeight = parseFloat(document.getElementById('pngHeight').value);
+                const maxDimension = Math.max(currentWidth, currentHeight);
+                
+                document.getElementById('pngWidth').value = Math.round(maxDimension);
+                document.getElementById('pngHeight').value = Math.round(maxDimension);
+            } else {
+                // Re-enable aspect ratio
+                document.getElementById('maintainAspectRatio').checked = true;
+            }
+        });
+
         document.getElementById('pngWidth').addEventListener('input', function() {
-            if (document.getElementById('maintainAspectRatio').checked && aspectRatio) {
+            const makeSquare = document.getElementById('makeSquare').checked;
+            if (makeSquare) {
+                // Keep both dimensions equal when square mode is active
+                document.getElementById('pngHeight').value = this.value;
+            } else if (document.getElementById('maintainAspectRatio').checked && aspectRatio) {
                 document.getElementById('pngHeight').value = Math.round(this.value / aspectRatio);
             }
         });
 
         document.getElementById('pngHeight').addEventListener('input', function() {
-            if (document.getElementById('maintainAspectRatio').checked && aspectRatio) {
+            const makeSquare = document.getElementById('makeSquare').checked;
+            if (makeSquare) {
+                // Keep both dimensions equal when square mode is active
+                document.getElementById('pngWidth').value = this.value;
+            } else if (document.getElementById('maintainAspectRatio').checked && aspectRatio) {
                 document.getElementById('pngWidth').value = Math.round(this.value * aspectRatio);
             }
         });
 
         function convertSvgToPng() {
             const svgFile = document.getElementById('svgFile').files[0];
-            const pngWidth = document.getElementById('pngWidth').value;
-            const pngHeight = document.getElementById('pngHeight').value;
+            const pngWidth = parseInt(document.getElementById('pngWidth').value);
+            const pngHeight = parseInt(document.getElementById('pngHeight').value);
+            const makeSquare = document.getElementById('makeSquare').checked;
+            const addBackground = document.getElementById('addBackground').checked;
+            const backgroundColor = document.getElementById('backgroundColor').value;
             const output = document.getElementById('output');
             const preview = document.getElementById('preview');
             const loadingScreen = document.getElementById('loadingScreen');
@@ -558,7 +631,41 @@
 
                 const img = new Image();
                 img.onload = function() {
-                    ctx.drawImage(img, 0, 0, pngWidth, pngHeight);
+                    // Fill background color if enabled
+                    if (addBackground) {
+                        ctx.fillStyle = backgroundColor;
+                        ctx.fillRect(0, 0, pngWidth, pngHeight);
+                    } else {
+                        // Clear with transparent background
+                        ctx.clearRect(0, 0, pngWidth, pngHeight);
+                    }
+                    
+                    if (makeSquare) {
+                        // Calculate padding to center the image
+                        const imgAspect = img.width / img.height;
+                        let drawWidth, drawHeight, offsetX, offsetY;
+                        
+                        if (imgAspect > 1) {
+                            // Image is wider - add padding top/bottom
+                            drawWidth = pngWidth;
+                            drawHeight = pngWidth / imgAspect;
+                            offsetX = 0;
+                            offsetY = (pngHeight - drawHeight) / 2;
+                        } else {
+                            // Image is taller - add padding left/right
+                            drawHeight = pngHeight;
+                            drawWidth = pngHeight * imgAspect;
+                            offsetX = (pngWidth - drawWidth) / 2;
+                            offsetY = 0;
+                        }
+                        
+                        // Draw image centered with padding
+                        ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
+                    } else {
+                        // Normal conversion - stretch to fill
+                        ctx.drawImage(img, 0, 0, pngWidth, pngHeight);
+                    }
+                    
                     const pngUrl = canvas.toDataURL('image/png');
                     
                     const downloadLink = document.createElement('a');
@@ -589,6 +696,11 @@
             document.getElementById('pngWidth').value = '300';
             document.getElementById('pngHeight').value = '300';
             document.getElementById('maintainAspectRatio').checked = true;
+            document.getElementById('makeSquare').checked = false;
+            document.getElementById('addBackground').checked = false;
+            document.getElementById('colorPickerGroup').style.display = 'none';
+            document.getElementById('backgroundColor').value = '#ffffff';
+            document.getElementById('colorHex').value = '#ffffff';
             document.getElementById('output').innerHTML = '';
             document.getElementById('preview').style.display = 'none';
             document.getElementById('preview').src = '';
