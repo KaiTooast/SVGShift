@@ -1,41 +1,77 @@
-# SVG to PNG Converter
+# SVGShift 🎨
 
-This is a simple, browser-based tool that allows users to convert SVG files to PNG format. It provides an easy-to-use interface for uploading SVG files, setting dimensions, and downloading the resulting PNG images.
+Ein moderner, browserbasierter SVG zu PNG Converter mit elegantem UI und Dark Mode Support.
 
-## Live Demo
+## 🌐 Live Demo
 
-Visit the online converter at: [svgshift.netlify.app](https://svgshift.netlify.app)
+Besuche den Online-Converter: [svgshift.netlify.app](https://svgshift.netlify.app)
 
-## Features
+## ✨ Features
 
-- Convert SVG files to PNG format
-- Adjust output PNG dimensions
-- Maintain aspect ratio option
-- Live preview of the converted image
-- Dark mode support
-- Responsive design for various screen sizes
-- Free to use and open source
+- **SVG zu PNG Konvertierung** - Schnelle und zuverlässige Konvertierung direkt im Browser
+- **Flexible Dimensionen** - Passe Breite und Höhe individuell an
+- **Seitenverhältnis beibehalten** - Automatische Berechnung der Proportionen
+- **Live-Vorschau** - Sofortige Vorschau des konvertierten Bildes
+- **Dark Mode** - Augenschonender Dunkelmodus mit Präferenz-Speicherung
+- **Modernes UI** - Gradient-Design mit flüssigen Animationen
+- **Responsive Design** - Optimiert für Desktop, Tablet und Mobile
+- **ViewBox-Support** - Korrekte Verarbeitung von SVGs mit komplexen viewBox-Definitionen
+- **100% Kostenlos** - Open Source und werbefrei
 
-## How to Use
+## 🚀 Verwendung
 
-1. Visit [svgshift.netlify.app](https://svgshift.netlify.app) or open the `index.html` file in a web browser
-2. Click on "Select SVG File" to upload your SVG file
-3. Adjust the PNG width and height as needed
-4. Check or uncheck "Maintain Aspect Ratio" as desired
-5. Click "Convert to PNG" to process the image
-6. Once converted, click the "Download" button to save your PNG file
+1. Besuche [svgshift.netlify.app](https://svgshift.netlify.app) oder öffne die `index.html` lokal
+2. Wähle eine SVG-Datei aus
+3. Die Dimensionen werden automatisch erkannt und eingetragen
+4. Passe Breite und Höhe nach Bedarf an
+5. Klicke auf "Convert to PNG"
+6. Lade dein konvertiertes PNG herunter
 
-## Technologies Used
+## 🛠️ Technologien
 
-- HTML5
-- CSS3
-- JavaScript (ES6+)
-- Canvas API for image processing
+- **HTML5** - Semantisches Markup
+- **CSS3** - Moderne Styles mit CSS Custom Properties und Gradients
+- **JavaScript (ES6+)** - Vanilla JS ohne Dependencies
+- **Canvas API** - Hochwertige Bildverarbeitung
+- **FileReader API** - Lokale Dateiverarbeitung
 
-## Local Setup
+## 💻 Lokale Installation
 
-No special setup is required. Simply clone the repository and open the `index.html` file in a modern web browser.
+Keine Installation erforderlich! Einfach klonen und öffnen:
 
 ```bash
 git clone https://github.com/Kaisoneo/SVGShift.git
 cd SVGShift
+# Öffne index.html in deinem Browser
+
+```
+
+## 🎨 UI-Highlights
+
+- **Gradient-Design** - Moderne Farbverläufe in Lila und Cyan
+- **Smooth Animations** - Flüssige Übergänge mit cubic-bezier
+- **Hover-Effekte** - Interaktive Elemente mit visuellen Feedback
+- **Glassmorphism** - Moderne Backdrop-Filter-Effekte
+- **Accessibility** - ARIA-Labels und semantisches HTML
+
+## 🐛 Bugfixes
+
+- **ViewBox-Parsing** - Korrekte Extraktion von Dimensionen aus komplexen viewBox-Definitionen
+- **Aspect Ratio** - Verbesserte Berechnung des Seitenverhältnisses
+- **Dark Mode** - Persistente Theme-Speicherung im LocalStorage
+
+## 📝 Lizenz
+
+MIT License - siehe [LICENSE](LICENSE) für Details
+
+## 🤝 Beitragen
+
+Contributions sind willkommen! Öffne gerne Issues oder Pull Requests.
+
+## 👤 Autor
+
+**Kai** - [GitHub](https://github.com/Kaisoneo)
+
+---
+
+⭐ Wenn dir dieses Projekt gefällt, gib ihm einen Stern auf GitHub!
