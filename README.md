@@ -1,77 +1,76 @@
 # SVGShift 🎨
 
-Ein moderner, browserbasierter SVG zu PNG Converter mit elegantem UI und Dark Mode Support.
+A modern, browser-based SVG to PNG converter with elegant UI and dark mode support.
 
 ## 🌐 Live Demo
 
-Besuche den Online-Converter: [svgshift.netlify.app](https://svgshift.netlify.app)
+Visit the online converter: [svgshift.netlify.app](https://svgshift.netlify.app)
 
 ## ✨ Features
 
-- **SVG zu PNG Konvertierung** - Schnelle und zuverlässige Konvertierung direkt im Browser
-- **Flexible Dimensionen** - Passe Breite und Höhe individuell an
-- **Seitenverhältnis beibehalten** - Automatische Berechnung der Proportionen
-- **Live-Vorschau** - Sofortige Vorschau des konvertierten Bildes
-- **Dark Mode** - Augenschonender Dunkelmodus mit Präferenz-Speicherung
-- **Modernes UI** - Gradient-Design mit flüssigen Animationen
-- **Responsive Design** - Optimiert für Desktop, Tablet und Mobile
-- **ViewBox-Support** - Korrekte Verarbeitung von SVGs mit komplexen viewBox-Definitionen
-- **100% Kostenlos** - Open Source und werbefrei
+- **SVG to PNG Conversion** - Fast and reliable conversion directly in your browser
+- **Flexible Dimensions** - Adjust width and height individually
+- **Maintain Aspect Ratio** - Automatic proportion calculation
+- **Live Preview** - Instant preview of the converted image
+- **Dark Mode** - Eye-friendly dark theme with preference storage
+- **Modern UI** - Gradient design with smooth animations
+- **Responsive Design** - Optimized for desktop, tablet, and mobile
+- **ViewBox Support** - Correct processing of SVGs with complex viewBox definitions
+- **100% Free** - Open source and ad-free
 
-## 🚀 Verwendung
+## 🚀 Usage
 
-1. Besuche [svgshift.netlify.app](https://svgshift.netlify.app) oder öffne die `index.html` lokal
-2. Wähle eine SVG-Datei aus
-3. Die Dimensionen werden automatisch erkannt und eingetragen
-4. Passe Breite und Höhe nach Bedarf an
-5. Klicke auf "Convert to PNG"
-6. Lade dein konvertiertes PNG herunter
+1. Visit [svgshift.netlify.app](https://svgshift.netlify.app) or open `index.html` locally
+2. Select an SVG file
+3. Dimensions are automatically detected and filled in
+4. Adjust width and height as needed
+5. Click "Convert to PNG"
+6. Download your converted PNG
 
-## 🛠️ Technologien
+## 🛠️ Technologies
 
-- **HTML5** - Semantisches Markup
-- **CSS3** - Moderne Styles mit CSS Custom Properties und Gradients
-- **JavaScript (ES6+)** - Vanilla JS ohne Dependencies
-- **Canvas API** - Hochwertige Bildverarbeitung
-- **FileReader API** - Lokale Dateiverarbeitung
+- **HTML5** - Semantic markup
+- **CSS3** - Modern styles with CSS custom properties and gradients
+- **JavaScript (ES6+)** - Vanilla JS without dependencies
+- **Canvas API** - High-quality image processing
+- **FileReader API** - Local file processing
 
-## 💻 Lokale Installation
+## 💻 Local Installation
 
-Keine Installation erforderlich! Einfach klonen und öffnen:
+No installation required! Just clone and open:
 
 ```bash
-git clone https://github.com/Kaisoneo/SVGShift.git
+git clone https://github.com/KaiTooast/SVGShift.git
 cd SVGShift
-# Öffne index.html in deinem Browser
-
+# Open index.html in your browser
 ```
 
-## 🎨 UI-Highlights
+## 🎨 UI Highlights
 
-- **Gradient-Design** - Moderne Farbverläufe in Lila und Cyan
-- **Smooth Animations** - Flüssige Übergänge mit cubic-bezier
-- **Hover-Effekte** - Interaktive Elemente mit visuellen Feedback
-- **Glassmorphism** - Moderne Backdrop-Filter-Effekte
-- **Accessibility** - ARIA-Labels und semantisches HTML
+- **Gradient Design** - Modern color gradients in purple and cyan
+- **Smooth Animations** - Fluid transitions with cubic-bezier easing
+- **Hover Effects** - Interactive elements with visual feedback
+- **Glassmorphism** - Modern backdrop filter effects
+- **Accessibility** - ARIA labels and semantic HTML
 
-## 🐛 Bugfixes
+## 🐛 Bug Fixes
 
-- **ViewBox-Parsing** - Korrekte Extraktion von Dimensionen aus komplexen viewBox-Definitionen
-- **Aspect Ratio** - Verbesserte Berechnung des Seitenverhältnisses
-- **Dark Mode** - Persistente Theme-Speicherung im LocalStorage
+- **ViewBox Parsing** - Correct extraction of dimensions from complex viewBox definitions
+- **Aspect Ratio** - Improved calculation of aspect ratios
+- **Dark Mode** - Persistent theme storage in localStorage
 
-## 📝 Lizenz
+## 📝 License
 
-MIT License - siehe [LICENSE](LICENSE) für Details
+MIT License - see [LICENSE](LICENSE) for details
 
-## 🤝 Beitragen
+## 🤝 Contributing
 
-Contributions sind willkommen! Öffne gerne Issues oder Pull Requests.
+Contributions are welcome! Feel free to open issues or pull requests.
 
-## 👤 Autor
+## 👤 Author
 
-**Kai** - [GitHub](https://github.com/Kaisoneo)
+**Kai** - [GitHub](https://github.com/KaiTooast)
 
 ---
 
-⭐ Wenn dir dieses Projekt gefällt, gib ihm einen Stern auf GitHub!
+⭐ If you like this project, give it a star on GitHub!
