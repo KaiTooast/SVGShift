@@ -40,7 +40,7 @@ Visit the online converter: [svgshift.netlify.app](https://svgshift.netlify.app)
 No installation required! Just clone and open:
 
 ```bash
-git clone https://github.com/KaiTooast/SVGShift.git
+git clone https://github.com/Michikaitsu/SVGShift.git
 cd SVGShift
 # Open index.html in your browser
 ```
@@ -69,7 +69,7 @@ Contributions are welcome! Feel free to open issues or pull requests.
 
 ## 👤 Author
 
-**Kai** - [GitHub](https://github.com/KaiTooast)
+**Michikaitsu** - [GitHub](https://github.com/Michikaitsu)
 
 ---
 
